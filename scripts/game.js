@@ -57,13 +57,13 @@ class Game {
     }
 
     if (this.frames % 200 === 0) {
-      let x = 1200;
-      let minHeight = 20; // at least 20px of min height
-      let maxHeight = 20; // max height
+      let randomNumber = 0;
+      let x = 1200
+      
+      let minWeight = -100; // at least 20px of min height
+      let maxWeight = -100; // max height
 
-      let height = Math.floor(
-        Math.random() * (maxHeight - minHeight + 1) + minHeight
-      );
+      let weight = Math.floor(Math.random() * (maxWeight - minWeight + 1) + minWeight);
 
       let minGap = 475;
       let maxGap = 475;
@@ -72,11 +72,18 @@ class Game {
 
       //Top obstacle EXTRA
       //this.enemies.push(new Component(x, 0, 50, height, "green", this.ctx));
-
+        randomNumber = Math.floor(Math.random() * 3);
       //Bottom obstacle
-      this.enemies.push(
-        new Component(x, height + gap, 50, x - height - gap, "blue", this.ctx)
-      );
+
+        // if counter is 0
+        if (randomNumber === 1) {
+          this.enemies.push(new Enemy1(x, 480, 50, 100, "enemy1", this.ctx));
+        } else if (randomNumber === 2) {
+          this.enemies.push(new Enemy2(x, 480, 50, 100, "enemy2", this.ctx));
+        } else if (randomNumber === 3) {
+          this.enemies.push(new Enemy3(x, 480, 50, 100, "enemy3", this.ctx));
+      };
+          //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
   }
 
