@@ -12,23 +12,22 @@ class Component {
     this.jTop = false;
   }
 
-  draw(){
-        const img = new Image();
-        img.addEventListener('click', ()=>{
-                this.img = img;
-        })
-        if(this.character === 'player'){
-        img.src = "../images/tram.png";
-      } else if (this.character === 'enemy1'){
-        img.src='../images/tourist.png'
-      } else if (this.character === 'enemy2'){
-        img.src='../images/tourist2.png'
-      } else if (this.character === 'enemy3'){
-        img.src='../images/bike.png'
-      }
-        this.ctx.drawImage(img, this.x, this.y, this.w, this.h);
-  
-}
+  draw() {
+    const img = new Image();
+    img.addEventListener("click", () => {
+      this.img = img;
+    });
+    if (this.character === "player") {
+      img.src = "../images/tram.png";
+    } else if (this.character === "enemy1") {
+      img.src = "../images/tourist-1.png";
+    } else if (this.character === "enemy2") {
+      img.src = "../images/tourist-2.png";
+    } else if (this.character === "enemy3") {
+      img.src = "../images/bike.png";
+    }
+    this.ctx.drawImage(img, this.x, this.y, this.w, this.h);
+  }
 
   newPos() {
     this.x += this.speedX;
@@ -40,18 +39,18 @@ class Component {
       if (!this.jTop) {
         //up
         this.speedY = -5;
-        this.speedX = 0.5;
+        this.speedX = 0;
       } else {
         //down
         this.speedY = 5.5;
-        this.speedX = 0.5;
+        this.speedX = 2;
       }
 
       if (this.y <= 200) {
         // how high you will jump
         this.jTop = true;
       }
-      if (this.y >= 450 && this.jTop) {
+      if (this.y >= 430 && this.jTop) {
         // check if jump cycle ended
         this.jumping = false;
         this.jTop = false;
@@ -86,4 +85,3 @@ class Component {
     );
   }
 }
-
