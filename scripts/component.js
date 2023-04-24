@@ -1,10 +1,10 @@
 class Component {
-  constructor(x, y, w, h, color, ctx) {
+  constructor(x, y, w, h, img, ctx) {
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
-    this.color = color;
+    this.img = img;
     this.ctx = ctx;
     this.speedX = 0;
     this.speedY = 0;
@@ -12,10 +12,14 @@ class Component {
     this.jTop = false;
   }
 
-  draw() {
-    this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.x, this.y, this.w, this.h);
-  }
+  draw(){
+            const img = new Image();
+            img.addEventListener('click', ()=>{
+                this.img = img;
+            })
+            img.src = "../images/tram.png";
+            this.ctx.drawImage(img, this.x, this.y, this.w, this.h);
+}
 
   newPos() {
     this.x += this.speedX;
