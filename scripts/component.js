@@ -40,18 +40,18 @@ class Component {
       if (!this.jTop) {
         //up
         this.speedY = -5;
-        this.speedX = 0.1;
+        this.speedX = 0.5;
       } else {
         //down
         this.speedY = 5.5;
-        this.speedX = 0.1;
+        this.speedX = 0.5;
       }
 
-      if (this.y <= 150) {
+      if (this.y <= 200) {
         // how high you will jump
         this.jTop = true;
       }
-      if (this.y >= 500 && this.jTop) {
+      if (this.y >= 450 && this.jTop) {
         // check if jump cycle ended
         this.jumping = false;
         this.jTop = false;
