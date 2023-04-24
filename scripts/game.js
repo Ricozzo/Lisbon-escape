@@ -16,12 +16,28 @@ class Game {
   update = () => {
     this.frames++;
     this.clear();
+    this.createBackground();
     this.player.jump()
     this.player.newPos();
     this.player.draw();
     this.updateEnemies();
     this.checkGameOver();
-  };
+  }
+
+    // Clear Background
+    clear(){
+      this.ctx.clearRect(0,0,this.width, this.height);
+  }
+
+  createBackground(){
+      const img = new Image();
+      img.addEventListener('load', ()=>{
+          this.img = img;
+      });
+
+      img.src= "../images/background.png";
+      this.ctx.drawImage(img, 0, 0, this.width, this.height);
+  }
 
   //Stops game
   stop() {
