@@ -7,6 +7,7 @@ class Game {
     this.intervalId = null;
     this.frames = 0;
     this.enemies = [];
+    this.score = 0;
   }
 
   start() {
@@ -22,6 +23,7 @@ class Game {
     this.player.draw();
     this.updateEnemies();
     this.checkGameOver();
+    this.drawScore();
   }
 
     // Clear Background
@@ -52,47 +54,56 @@ class Game {
   //Update Enemies
   updateEnemies() {
     for (let i = 0; i < this.enemies.length; i++) {
-      this.enemies[i].x -= 1; // Enemy goes more to the right
+      this.enemies[i].x -= 3; // Enemy goes more to the right
       this.enemies[i].draw(); // continue to draw enemy
     }
 
-    if (this.frames % 200 === 0) {
-      let randomNumber = 0;
-      let x = 1200
-      
-      let minWeight = -100; // at least 20px of min height
-      let maxWeight = -100; // max height
+    // each 2 seconds, a enemy is updated
+    if (this.frames % 300 === 0) {
 
-      let weight = Math.floor(Math.random() * (maxWeight - minWeight + 1) + minWeight);
+      /*
+      let minWidth = 50; // at least of 50px of width
+      let maxWidth = 400; // max width of 400px
+      let width = Math.floor(Math.random()*(maxWidth - minWidth + 1) + minWidth);
+      let randomX = Math.floor(Math.random() * (this.ctx.canvas.width - width));
+      */
 
-      let minGap = 475;
-      let maxGap = 475;
-
-      let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-
-      //Top obstacle EXTRA
-      //this.enemies.push(new Component(x, 0, 50, height, "green", this.ctx));
-        randomNumber = Math.floor(Math.random() * 3);
-      //Bottom obstacle
-
-        // if counter is 0
-        if (randomNumber === 1) {
-          this.enemies.push(new Enemy1(x, 480, 50, 100, "enemy1", this.ctx));
+        let randomNumber = Math.floor(Math.random() * 3);
+        if (randomNumber === 0) {
+          this.enemies.push(new Component(1200, 500, 40, 80, "enemy1", this.ctx));
+        } else if (randomNumber === 1) {
+          this.enemies.push(new Component(1400, 500, 40, 80, "enemy2", this.ctx));
         } else if (randomNumber === 2) {
-          this.enemies.push(new Enemy2(x, 480, 50, 100, "enemy2", this.ctx));
-        } else if (randomNumber === 3) {
-          this.enemies.push(new Enemy3(x, 480, 50, 100, "enemy3", this.ctx));
+          this.enemies.push(new Component(1000, 500, 50, 80, "enemy3", this.ctx));
       };
           //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
+    };  
+
+
+    if (this.enemies[i].x > this.width) {
+      this.score++;
+      this.enemies.splice(i,2);
     }
+    
   }
+
+    drawScore() {
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "24px Arial";
+      this.ctx.fillText(`score: ${this.score}, 10, 30`);
+    }
+
 
   checkGameOver() {
     const crashed = this.enemies.some((enemy) => {
       return this.player.crashWith(enemy);
     });
 
+    let lives = 3;
+
     if (crashed) {
+      lives--;
+    } else {
       this.stop();
       this.fillStyle = "orange";
       this.ctx.font = "72px Arial";
