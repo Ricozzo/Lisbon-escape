@@ -8,6 +8,8 @@ class Component {
     this.ctx = ctx;
     this.speedX = 0;
     this.speedY = 0;
+    this.jumping = false;
+    this.jTop = false;
   }
 
   draw() {
@@ -18,6 +20,32 @@ class Component {
   newPos() {
     this.x += this.speedX;
     this.y += this.speedY;
+  }
+
+  jump() {
+    if (this.jumping) {
+      if (!this.jTop) {
+        //up
+        this.speedY = -4;
+        this.speedX = 0.5;
+      } else {
+        //down
+        this.speedY = 4.5;
+        this.speedX = 0.5;
+      }
+
+      if (this.y <= 260) {
+        // how high you will jump
+        this.jTop = true;
+      }
+      if (this.y >= 525 && this.jTop) {
+        // check if jump cycle ended
+        this.jumping = false;
+        this.jTop = false;
+        this.speedY = 0;
+        this.speedX = 0;
+      }
+    }
   }
 
   top() {

@@ -25,7 +25,10 @@ document.addEventListener("keydown", (e) => {
       player.speedX -= 1;
       break;
     case "ArrowRight":
-      player.speedX += 1;
+      player.speedX += 1
+      break;
+    case "ArrowUp":
+      player.jumping = true
       break;
   }
 });

@@ -16,6 +16,7 @@ class Game {
   update = () => {
     this.frames++;
     this.clear();
+    this.player.jump()
     this.player.newPos();
     this.player.draw();
     this.updateEnemies();
@@ -48,13 +49,13 @@ class Game {
         Math.random() * (maxHeight - minHeight + 1) + minHeight
       );
 
-      let minGap = 95;
-      let maxGap = 200;
+      let minGap = 475;
+      let maxGap = 475;
 
       let gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
 
-      //Top obstacle
-      this.enemies.push(new Component(x, 0, 50, height, "green", this.ctx));
+      //Top obstacle EXTRA
+      //this.enemies.push(new Component(x, 0, 50, height, "green", this.ctx));
 
       //Bottom obstacle
       this.enemies.push(
