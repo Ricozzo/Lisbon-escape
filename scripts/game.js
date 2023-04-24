@@ -92,14 +92,14 @@ class Game {
     const hearts = new Image();
     hearts.src = "../images/heart.png";
     if (this.lives === 3) {
-      this.ctx.drawImage(hearts, 20, 20, 40, 40);
-      this.ctx.drawImage(hearts, 60, 20, 40, 40);
-      this.ctx.drawImage(hearts, 100, 20, 40, 40);
+      this.ctx.drawImage(hearts, 1350, 20, 40, 40);
+      this.ctx.drawImage(hearts, 1310, 20, 40, 40);
+      this.ctx.drawImage(hearts, 1270, 20, 40, 40);
     } else if (this.lives === 2) {
-      this.ctx.drawImage(hearts, 20, 20, 40, 40);
-      this.ctx.drawImage(hearts, 60, 20, 40, 40);
+      this.ctx.drawImage(hearts, 1310, 20, 40, 40);
+      this.ctx.drawImage(hearts, 1270, 20, 40, 40);
     } else if (this.lives === 1) {
-      this.ctx.drawImage(hearts, 20, 20, 40, 40);
+      this.ctx.drawImage(hearts, 1270, 20, 40, 40);
     }
   }
 
@@ -122,8 +122,8 @@ class Game {
     if (this.lives <= 0) {
       this.stop();
       this.fillStyle = "orange";
-      this.ctx.font = "72px Arial";
-      this.ctx.fillText("You were deported", 0, this.height / 2);
+      this.ctx.font = "50px Arial";
+      this.ctx.fillText("You were deported", 500, this.height / 2);
     }
   }
 }
