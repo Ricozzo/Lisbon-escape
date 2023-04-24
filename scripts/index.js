@@ -9,7 +9,7 @@ const ctx = canvas.getContext("2d");
 const startButton = document.getElementById("start");
 
 // Create tha Player
-const player = new Component(0, 500, 200, 100, "player", ctx);
+const player = new Component(0, 450, 250, 150, "player", ctx);
 
 //Start Button on Click
 startButton.onclick = function () {
@@ -25,10 +25,10 @@ document.addEventListener("keydown", (e) => {
       player.speedX -= 1;
       break;
     case "ArrowRight":
-      player.speedX += 1
+      player.speedX += 1;
       break;
     case "ArrowUp":
-      player.jumping = true
+      player.jumping = true;
       break;
   }
 });
