@@ -38,7 +38,7 @@ class Game {
       this.img = img;
     });
 
-    img.src = "../images/background.png";
+    img.src = "../images/background2.jpg";
     this.ctx.drawImage(img, 0, 0, this.width, this.height);
   }
 
@@ -75,20 +75,17 @@ class Game {
 
       let randomNumber = Math.floor(Math.random() * 3);
       if (randomNumber === 0) {
-        this.enemies.push(new Component(1200, 500, 40, 80, "enemy1", this.ctx));
+        this.enemies.push(new Component(1400, 500, 40, 80, "enemy1", this.ctx));
       } else if (randomNumber === 1) {
         this.enemies.push(new Component(1400, 500, 40, 80, "enemy2", this.ctx));
       } else if (randomNumber === 2) {
-        this.enemies.push(new Component(1000, 500, 50, 80, "enemy3", this.ctx));
+        this.enemies.push(new Component(1400, 500, 50, 80, "enemy3", this.ctx));
       }
       //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
   }
 
   drawScore() {
-    this.ctx.fillStyle = "white";
-    this.ctx.font = "24px Arial";
-    this.ctx.fillText(`score: ${this.score}`, 10, 30);
     const hearts = new Image();
     hearts.src = "../images/heart.png";
     if (this.lives === 3) {
@@ -100,6 +97,17 @@ class Game {
       this.ctx.drawImage(hearts, 1270, 20, 40, 40);
     } else if (this.lives === 1) {
       this.ctx.drawImage(hearts, 1270, 20, 40, 40);
+    }
+
+    if (this.lives <= 0) {
+      this.stop();
+      this.ctx.fillStyle = "green";
+      this.ctx.font = "50px Arial";
+      this.ctx.fillText("You were deported", 500, this.height / 2);
+    } else {
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "24px Arial";
+      this.ctx.fillText(`score: ${this.score}`, 10, 30);
     }
   }
 
