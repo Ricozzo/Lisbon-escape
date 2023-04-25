@@ -20,8 +20,7 @@ startButton.onclick = function () {
   const game = new Game(ctx, canvas.width, canvas.height, player);
   backgroundMusic.play();
   game.start();
-  document.getElementById("instructions").style.display = "none";
-  document.getElementById("start").style.display = "none";
+  document.getElementById("game-intro").style.display = "none";
 };
 
 // Move the Player

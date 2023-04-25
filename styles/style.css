@@ -3,16 +3,35 @@ body {
   text-align: center;
 }
 
-.content {
-  margin: 0 auto;
-  max-width: 1400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#game-intro {
+  float: left;
+  background-color: #1d12eb;
+  color: #fff;
+  padding: 20px 0px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-top: 1%;
+  opacity: 90%;
 }
 
-#start {
-  font-family: Arial, Helvetica, sans-serif;
+.instruction{
+  font-size: 28px;
+  font-family: "Verdana";
+  color:white;
+
+
+}
+
+.logo-img {
+  width: 350px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+body button {
   font-size: 30px;
   background-color: #870007;
   color: #fff;
@@ -20,17 +39,10 @@ body {
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
-  margin-top: 510px;
-  position: absolute;
+  margin-bottom: 20px;
 }
 
-#instructions {
-  background-image: url("../images/traaam.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 600px;
-  height: 600px;
-  display: grid;
-  position: absolute;
+#game-board {
+    float: left;
+    padding: 20px 0px;
 }

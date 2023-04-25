@@ -8,17 +8,26 @@
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
   <body background="../images/azulejo.png">
-    <div class="content">
-      <div id="instructions"></div>
-      <p>Welcome to Lisbon. Don't crash into tourists or bikes, and use the up arrow to avoid them. Lisbon will deport you otherwise!</p>
+    <div id="game-intro">
+      <img src="./images/tram_logo.png" alt="" class="logo-img"/>
+      <br/>
+      <br/>
+      <br/>
+      <button id="start">Save Lisbon</button>
+      <p class="instruction">Welcome to Lisbon. Don't crash into tourists or bikes, and use the up arrow to avoid them. Lisbon will deport you otherwise!</p>
+      <img src="./images/arrows.png" alt="" class="arrows-img" />
+    </div>  
+
+    <div id="game-board">
       <canvas id="canvas" width="1400" height="600"></canvas>
+    </div>  
       <audio
         id="backgroundMusic"
         src="./audio/garagem.mp3"
         autoplay
         loop
       ></audio>
-      <button id="start">Save Lisbon</button>
+ 
     </div>
     <script src="./scripts/game.js"></script>
     <script src="./scripts/component.js"></script>
