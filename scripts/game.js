@@ -79,7 +79,7 @@ class Game {
       } else if (randomNumber === 1) {
         this.enemies.push(new Component(1400, 500, 40, 80, "enemy2", this.ctx));
       } else if (randomNumber === 2) {
-        this.enemies.push(new Component(1400, 500, 50, 80, "enemy3", this.ctx));
+        this.enemies.push(new Component(1400, 500, 80, 80, "enemy3", this.ctx));
       }
       //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
@@ -99,15 +99,27 @@ class Game {
       this.ctx.drawImage(hearts, 1270, 20, 40, 40);
     }
 
+    const passport = new Image();
+    passport.src = "../images/passport.png";
+    const sardin = new Image();
+    sardin.src = "../images/sardinha.png";
+    const portowine = new Image();
+    portowine.src = "../images/portowine.png";
     if (this.lives <= 0) {
       this.stop();
-      this.ctx.fillStyle = "green";
-      this.ctx.font = "50px Arial";
-      this.ctx.fillText("You were deported", 500, this.height / 2);
+      this.ctx.fillStyle = "#870007";
+      this.ctx.fillRect(this.width / 2 - 200, this.height / 2 - 200, 400, 400);
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "30px Arial";
+      this.ctx.fillText("You were deported", 575, this.height / 2);
+      this.ctx.fillText(`score: ${this.score}`, 650, this.height / 2 + 60);
+      this.ctx.drawImage(passport, 650, 150, 100, 125);
+      this.ctx.drawImage(sardin, 490, 375, 175, 130);
+      this.ctx.drawImage(portowine, 800, 400, 75, 90);
     } else {
       this.ctx.fillStyle = "white";
-      this.ctx.font = "24px Arial";
-      this.ctx.fillText(`score: ${this.score}`, 10, 30);
+      this.ctx.font = "15px Arial";
+      this.ctx.fillText(`Score: ${this.score}`, 10, 30);
     }
   }
 
@@ -125,13 +137,6 @@ class Game {
         this.lives--;
         this.enemies.splice(i, 1);
       }
-    }
-
-    if (this.lives <= 0) {
-      this.stop();
-      this.fillStyle = "orange";
-      this.ctx.font = "50px Arial";
-      this.ctx.fillText("You were deported", 500, this.height / 2);
     }
   }
 }

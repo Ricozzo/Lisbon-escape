@@ -46,7 +46,7 @@ class Component {
         this.speedX = 2;
       }
 
-      if (this.y <= 200) {
+      if (this.y <= 150) {
         // how high you will jump
         this.jTop = true;
       }
