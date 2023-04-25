@@ -119,6 +119,22 @@ class Game {
       this.ctx.drawImage(passport, 650, 150, 100, 125);
       this.ctx.drawImage(sardin, 490, 375, 175, 130);
       this.ctx.drawImage(portowine, 800, 400, 75, 90);
+
+       // Add restart button
+       this.ctx.fillStyle = "white";
+       this.ctx.font = "20px Arial";
+       this.ctx.fillText("Restart", this.width / 2 - 30, this.height / 2 + 120);
+       const restartButton = document.createElement("button");
+       restartButton.innerHTML = "Restart";
+       restartButton.style.position = "absolute";
+       restartButton.style.top = `${this.height / 2 + 140}px`;
+       restartButton.style.left = `${this.width / 2 - 50}px`;
+       restartButton.addEventListener("click", () => {
+         this.reset();
+       });
+       document.body.appendChild(restartButton);
+ 
+      
     } else {
       this.ctx.fillStyle = "white";
       this.ctx.font = "15px Arial";
