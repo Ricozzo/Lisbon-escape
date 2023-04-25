@@ -5,6 +5,9 @@ console.log("JS is loaded");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// Music
+const backgroundMusic = document.getElementById("backgroundMusic");
+
 // Start Button
 const startButton = document.getElementById("start");
 
@@ -15,6 +18,7 @@ const player = new Component(0, 430, 200, 150, "player", ctx);
 startButton.onclick = function () {
   console.log("start");
   const game = new Game(ctx, canvas.width, canvas.height, player);
+  backgroundMusic.play();
   game.start();
   document.getElementById("instructions").style.display = "none";
   document.getElementById("start").style.display = "none";
@@ -40,5 +44,3 @@ document.addEventListener("keyup", () => {
   player.speedX = 0;
   player.speedY = 0;
 });
-
-

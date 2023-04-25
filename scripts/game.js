@@ -73,13 +73,15 @@ class Game {
       let randomX = Math.floor(Math.random() * (this.ctx.canvas.width - width));
       */
 
-      let randomNumber = Math.floor(Math.random() * 3);
+      let randomNumber = Math.floor(Math.random() * 4);
       if (randomNumber === 0) {
         this.enemies.push(new Component(1400, 500, 40, 80, "enemy1", this.ctx));
       } else if (randomNumber === 1) {
         this.enemies.push(new Component(1400, 500, 40, 80, "enemy2", this.ctx));
       } else if (randomNumber === 2) {
         this.enemies.push(new Component(1400, 500, 80, 80, "enemy3", this.ctx));
+      } else if (randomNumber === 3) {
+        this.enemies.push(new Component(1400, 100, 60, 60, "enemy4", this.ctx));
       }
       //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
@@ -107,8 +109,9 @@ class Game {
     portowine.src = "../images/portowine.png";
     if (this.lives <= 0) {
       this.stop();
+      this.ctx.roundRect(this.width / 2 - 200, this.height / 2 - 200, 400, 400, 10);
       this.ctx.fillStyle = "#870007";
-      this.ctx.fillRect(this.width / 2 - 200, this.height / 2 - 200, 400, 400);
+      this.ctx.fill();
       this.ctx.fillStyle = "white";
       this.ctx.font = "30px Arial";
       this.ctx.fillText("You were deported", 575, this.height / 2);

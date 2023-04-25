@@ -25,6 +25,8 @@ class Component {
       img.src = "../images/tourist-2.png";
     } else if (this.character === "enemy3") {
       img.src = "../images/bike.png";
+    } else if (this.character === "enemy4") {
+      img.src = "../images/pigeon.png";
     }
     this.ctx.drawImage(img, this.x, this.y, this.w, this.h);
   }
