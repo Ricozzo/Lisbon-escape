@@ -16,6 +16,8 @@ startButton.onclick = function () {
   console.log("start");
   const game = new Game(ctx, canvas.width, canvas.height, player);
   game.start();
+  document.getElementById("instructions").style.display = "none";
+  document.getElementById("start").style.display = "none";
 };
 
 // Move the Player
