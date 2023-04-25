@@ -1,3 +1,6 @@
+let backgroundMusic = new Audio("../audio/garagem.mp3");
+backgroundMusic.loop = false;
+
 class Game {
   constructor(ctx, width, height, player) {
     this.ctx = ctx;
@@ -13,6 +16,7 @@ class Game {
 
   start() {
     this.intervalId = setInterval(this.update, 10);
+    backgroundMusic.play();
   }
 
   update = () => {
@@ -45,6 +49,8 @@ class Game {
   //Stops game
   stop() {
     clearInterval(this.intervalId);
+    backgroundMusic.pause();
+    backgroundMusic.currentTime = 0;
   }
 
   //Clears Canvas
@@ -109,7 +115,13 @@ class Game {
     portowine.src = "../images/portowine.png";
     if (this.lives <= 0) {
       this.stop();
-      this.ctx.roundRect(this.width / 2 - 200, this.height / 2 - 200, 400, 400, 10);
+      this.ctx.roundRect(
+        this.width / 2 - 200,
+        this.height / 2 - 200,
+        400,
+        400,
+        10
+      );
       this.ctx.fillStyle = "#870007";
       this.ctx.fill();
       this.ctx.fillStyle = "white";
@@ -119,12 +131,6 @@ class Game {
       this.ctx.drawImage(passport, 650, 150, 100, 125);
       this.ctx.drawImage(sardin, 490, 375, 175, 130);
       this.ctx.drawImage(portowine, 800, 400, 75, 90);
-
-       // Add restart button
-
-    
- 
-      
     } else {
       this.ctx.fillStyle = "white";
       this.ctx.font = "15px Arial";
@@ -132,7 +138,6 @@ class Game {
     }
   }
 
-  
   checkGameOver() {
     /*     const crashed = this.enemies.some((enemy) => {
       return this.player.crashWith(enemy);

@@ -6,7 +6,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 // Music
-const backgroundMusic = document.getElementById("backgroundMusic");
+/* const backgroundMusic = document.getElementById("backgroundMusic"); */
 
 // Start Button
 const startButton = document.getElementById("start");
@@ -18,11 +18,10 @@ const player = new Component(0, 430, 200, 150, "player", ctx);
 startButton.onclick = function () {
   console.log("start");
   const game = new Game(ctx, canvas.width, canvas.height, player);
-  backgroundMusic.play();
+  /* backgroundMusic.play(); */
   game.start();
   document.getElementById("game-intro").style.display = "none";
 };
-
 // Move the Player
 document.addEventListener("keydown", (e) => {
   switch (e.code) {
