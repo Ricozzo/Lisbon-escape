@@ -4,23 +4,19 @@ body {
 }
 
 #game-intro {
-  float: left;
   background-color: #1d12eb;
-  color: #fff;
   padding: 20px 0px;
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
-  margin-top: 1%;
+  margin: 1% 2%;
   opacity: 90%;
 }
 
 .instruction{
   font-size: 28px;
-  font-family: "Verdana";
+  font-family:'Gill Sans';
   color:white;
-
-
 }
 
 .logo-img {
@@ -31,18 +27,17 @@ body {
   width: 150px;
 }
 
-body button {
-  font-size: 30px;
-  background-color: #870007;
-  color: #fff;
-  padding: 20px 40px;
-  border: 0;
-  box-shadow: 0;
-  border-radius: 5px;
-  margin-bottom: 20px;
+#start {
+  display: inline-block;
+  width: 300px;
+  height: 95px;
+  background-image: url("../images/start.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-indent: -9999px; /* Hides the text content of the button */
+  border: none;
 }
 
 #game-board {
-    float: left;
     padding: 20px 0px;
 }
