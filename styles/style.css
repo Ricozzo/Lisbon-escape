@@ -13,13 +13,16 @@ body {
   border-radius: 5px;
   margin: 2% 1%;
   opacity: 90%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .instruction {
   font-size: 28px;
   font-family: "Minecraft";
   color: white;
-  padding: 0 400px;
+  padding: 0 300px;
 }
 
 .logo-img {

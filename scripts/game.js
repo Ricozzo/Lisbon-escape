@@ -14,6 +14,7 @@ class Game {
     this.enemyThree = [];
     this.enemyFour = [];
     this.score = 0;
+    this.highScore = 0;
     this.lives = 3;
     this.maleScream = new Audio("../audio/male.mp3");
     this.maleScream.loop = false;
@@ -168,6 +169,9 @@ class Game {
         400,
         10
       );
+      if (this.score > this.highScore){
+      this.highScore = this.score;
+      };
       this.ctx.fillStyle = "#870007";
       this.ctx.fill();
       this.ctx.fillStyle = "white";
@@ -227,6 +231,14 @@ class Game {
       this.ctx.font = "30px Minecraft";
       this.ctx.fillText(`Score: ${this.score}`, 20, 50);
     }
+  }
+
+  drawHighScore() {
+   if (this.highScore != 0){
+    this.ctx.fillStyle = "white";
+    this.ctx.font = "30px Minecraft";
+    this.ctx.fillText(`High Score: ${this.score}`, 100, 50);
+   }
   }
 
   checkGameOver() {
