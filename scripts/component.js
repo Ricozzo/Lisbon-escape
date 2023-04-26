@@ -86,4 +86,13 @@ class Component {
       this.left() < enemy.right()
     );
   }
+
+  restart() {
+    this.frames = 0;
+    this.enemies = [];
+    this.score = 0;
+    this.lives = 3;
+    this.start();
+  }
+  
 }

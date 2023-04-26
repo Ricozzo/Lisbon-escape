@@ -12,6 +12,8 @@ class Game {
     this.enemies = [];
     this.score = 0;
     this.lives = 3;
+
+  
   }
 
   start() {
@@ -72,12 +74,6 @@ class Game {
 
     // each 2 seconds, a enemy is updated
     if (this.frames % 300 === 0) {
-      /*
-      let minWidth = 50; // at least of 50px of width
-      let maxWidth = 400; // max width of 400px
-      let width = Math.floor(Math.random()*(maxWidth - minWidth + 1) + minWidth);
-      let randomX = Math.floor(Math.random() * (this.ctx.canvas.width - width));
-      */
 
       let randomNumber = Math.floor(Math.random() * 4);
       if (randomNumber === 0) {
@@ -119,7 +115,6 @@ class Game {
 
     const restartButton = new Image();
     restartButton.src = "../images/restart.png";
-    restartButton.id = "restart-button"; // add id to restart button element
 
 
     if (this.lives <= 0) {
@@ -144,14 +139,24 @@ class Game {
       // Restart Button    
       this.ctx.drawImage(restartButton, 620, 360, 154, 50); 
 
-      restartButton.addEventListener("click", () => {
-        this.frames = 0; // reset frames
-        this.enemies = []; // reset enemies
-        this.score = 0; // reset score
-        this.lives = 3; // reset lives
-        this.start(); // start the game again
+      // Add event listener for restart button
+      const canvasElement = document.querySelector("canvas");
+      canvasElement.addEventListener("click", (event) => {
+        const canvasX = event.pageX - canvasElement.offsetLeft;
+        const canvasY = event.pageY - canvasElement.offsetTop;
+
+        if (
+          canvasX >= 620 &&
+          canvasX <= 774 &&
+          canvasY >= 360 &&
+          canvasY <= 410
+        ) {
+          // Restart game
+          location.reload();
+        }
       });
- 
+
+
     } else {
       this.ctx.fillStyle = "white";
       this.ctx.font = "20px Gill Sans";
