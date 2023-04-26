@@ -46,7 +46,7 @@ class Game {
     this.ctx.drawImage(img, 0, 0, this.width, this.height);
   }
 
-  //Stops game
+  //Stop game
   stop() {
     clearInterval(this.intervalId);
     backgroundMusic.pause();
@@ -109,10 +109,19 @@ class Game {
 
     const passport = new Image();
     passport.src = "../images/passport.png";
+
+    const sardinLink = 'https://www.linkedin.com/in/elnaz-farrokhi/';
     const sardin = new Image();
     sardin.src = "../images/sardinha.png";
+
     const portowine = new Image();
     portowine.src = "../images/portowine.png";
+
+    const restartButton = new Image();
+    restartButton.src = "../images/restart.png";
+    restartButton.id = "restart-button"; // add id to restart button element
+
+
     if (this.lives <= 0) {
       this.stop();
       this.ctx.roundRect(
@@ -125,15 +134,27 @@ class Game {
       this.ctx.fillStyle = "#870007";
       this.ctx.fill();
       this.ctx.fillStyle = "white";
-      this.ctx.font = "30px Arial";
-      this.ctx.fillText("You were deported", 575, this.height / 2);
-      this.ctx.fillText(`score: ${this.score}`, 650, this.height / 2 + 60);
-      this.ctx.drawImage(passport, 650, 150, 100, 125);
-      this.ctx.drawImage(sardin, 490, 375, 175, 130);
+      this.ctx.font = "30px Gill Sans";
+      this.ctx.fillText("You were deported", 575, this.height / 2 - 30);
+      this.ctx.fillText(`score: ${this.score}`, 650, this.height / 2 + 30);
+      this.ctx.drawImage(passport, 650, 120, 100, 125);
+      this.ctx.drawImage(sardin, 490, 390, 175, 130);
       this.ctx.drawImage(portowine, 800, 400, 75, 90);
+
+      // Restart Button    
+      this.ctx.drawImage(restartButton, 620, 360, 154, 50); 
+
+      restartButton.addEventListener("click", () => {
+        this.frames = 0; // reset frames
+        this.enemies = []; // reset enemies
+        this.score = 0; // reset score
+        this.lives = 3; // reset lives
+        this.start(); // start the game again
+      });
+ 
     } else {
       this.ctx.fillStyle = "white";
-      this.ctx.font = "15px Arial";
+      this.ctx.font = "20px Gill Sans";
       this.ctx.fillText(`Score: ${this.score}`, 10, 30);
     }
   }
