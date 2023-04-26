@@ -73,7 +73,7 @@ class Game {
     }
 
     // each 2 seconds, a enemy is updated
-    if (this.frames % 300 === 0) {
+    if (this.frames % 200 === 0) {
 
       let randomNumber = Math.floor(Math.random() * 4);
       if (randomNumber === 0) {
@@ -83,7 +83,7 @@ class Game {
       } else if (randomNumber === 2) {
         this.enemies.push(new Component(1400, 500, 80, 80, "enemy3", this.ctx));
       } else if (randomNumber === 3) {
-        this.enemies.push(new Component(1400, 100, 60, 60, "enemy4", this.ctx));
+        this.enemies.push(new Component(1400, 140, 60, 60, "enemy4", this.ctx));
       }
       //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
@@ -106,9 +106,9 @@ class Game {
     const passport = new Image();
     passport.src = "../images/passport.png";
 
-    const sardinLink = 'https://www.linkedin.com/in/elnaz-farrokhi/';
+    //const sardinLink = 'https://www.linkedin.com/in/elnaz-farrokhi/';
     const sardin = new Image();
-    sardin.src = "../images/sardinha.png";
+    sardin.src = "../images/sardinnn.png";
 
     const portowine = new Image();
     portowine.src = "../images/portowine.png";
@@ -120,9 +120,9 @@ class Game {
     if (this.lives <= 0) {
       this.stop();
       this.ctx.roundRect(
-        this.width / 2 - 200,
+        this.width / 2 - 250,
         this.height / 2 - 200,
-        400,
+        500,
         400,
         10
       );
@@ -130,14 +130,15 @@ class Game {
       this.ctx.fill();
       this.ctx.fillStyle = "white";
       this.ctx.font = "30px Gill Sans";
-      this.ctx.fillText("You were deported", 575, this.height / 2 - 30);
-      this.ctx.fillText(`score: ${this.score}`, 650, this.height / 2 + 30);
-      this.ctx.drawImage(passport, 650, 120, 100, 125);
-      this.ctx.drawImage(sardin, 490, 390, 175, 130);
-      this.ctx.drawImage(portowine, 800, 400, 75, 90);
+      this.ctx.fillText("You were deported", 575, 245);
+      this.ctx.fillText(`score: ${this.score}`, 650, 290);
+      this.ctx.fillText(`Grab your Souvenir`, 585, this.height / 2 + 150);
+      this.ctx.drawImage(passport, 650, 100, 100, 125);
+      this.ctx.drawImage(sardin, 470, 400, 75, 90);
+      this.ctx.drawImage(portowine, 858, 400, 75, 90);
 
       // Restart Button    
-      this.ctx.drawImage(restartButton, 620, 360, 154, 50); 
+      this.ctx.drawImage(restartButton, 620, 335, 154, 50); 
 
       // Add event listener for restart button
       const canvasElement = document.querySelector("canvas");
@@ -145,6 +146,7 @@ class Game {
         const canvasX = event.pageX - canvasElement.offsetLeft;
         const canvasY = event.pageY - canvasElement.offsetTop;
 
+        //Restart Button
         if (
           canvasX >= 620 &&
           canvasX <= 774 &&
@@ -154,6 +156,30 @@ class Game {
           // Restart game
           location.reload();
         }
+
+        //Sardin
+        if (
+          canvasX >= 490 && //x
+          canvasX <= 660 && //x+w
+          canvasY >= 390 && //y
+          canvasY <= 520 //y+h
+        ) {
+          // Elnaz LinkedIn
+          window.location.href ="https://www.linkedin.com/in/elnaz-farrokhi/"
+        }
+
+        //Portowine
+        if (
+          canvasX >= 800 && //x
+          canvasX <= 875 && //x+w
+          canvasY >= 400 && //y
+          canvasY <= 490 //y+h
+        ) {
+          // Henrique Linkedin
+          window.location.href ="https://www.linkedin.com/in/henriqueortizpereira/"
+        }
+
+
       });
 
 
