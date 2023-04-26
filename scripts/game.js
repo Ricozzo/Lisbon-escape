@@ -12,8 +12,6 @@ class Game {
     this.enemies = [];
     this.score = 0;
     this.lives = 3;
-
-  
   }
 
   start() {
@@ -74,7 +72,6 @@ class Game {
 
     // each 2 seconds, a enemy is updated
     if (this.frames % 200 === 0) {
-
       let randomNumber = Math.floor(Math.random() * 4);
       if (randomNumber === 0) {
         this.enemies.push(new Component(1400, 500, 40, 80, "enemy1", this.ctx));
@@ -116,7 +113,6 @@ class Game {
     const restartButton = new Image();
     restartButton.src = "../images/restart.png";
 
-
     if (this.lives <= 0) {
       this.stop();
       this.ctx.roundRect(
@@ -137,8 +133,8 @@ class Game {
       this.ctx.drawImage(sardin, 470, 400, 75, 90);
       this.ctx.drawImage(portowine, 858, 400, 75, 90);
 
-      // Restart Button    
-      this.ctx.drawImage(restartButton, 620, 335, 154, 50); 
+      // Restart Button
+      this.ctx.drawImage(restartButton, 620, 335, 154, 50);
 
       // Add event listener for restart button
       const canvasElement = document.querySelector("canvas");
@@ -159,30 +155,27 @@ class Game {
 
         //Sardin
         if (
-          canvasX >= 490 && //x
-          canvasX <= 660 && //x+w
-          canvasY >= 390 && //y
-          canvasY <= 520 //y+h
+          canvasX >= 470 && //x
+          canvasX <= 545 && //x+w
+          canvasY >= 400 && //y
+          canvasY <= 490 //y+h
         ) {
           // Elnaz LinkedIn
-          window.location.href ="https://www.linkedin.com/in/elnaz-farrokhi/"
+          window.location.href = "https://www.linkedin.com/in/elnaz-farrokhi/";
         }
 
         //Portowine
         if (
-          canvasX >= 800 && //x
-          canvasX <= 875 && //x+w
+          canvasX >= 858 && //x
+          canvasX <= 933 && //x+w
           canvasY >= 400 && //y
           canvasY <= 490 //y+h
         ) {
           // Henrique Linkedin
-          window.location.href ="https://www.linkedin.com/in/henriqueortizpereira/"
+          window.location.href =
+            "https://www.linkedin.com/in/henriqueortizpereira/";
         }
-
-
       });
-
-
     } else {
       this.ctx.fillStyle = "white";
       this.ctx.font = "20px Gill Sans";
