@@ -5,11 +5,11 @@ body {
 
 #game-intro {
   background-color: #1d12eb;
-  padding: 20px 0px;
+  /* padding: 20px 0px; */
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
-  margin: 1% 2%;
+  margin: 2% 1%;
   opacity: 90%;
 }
 

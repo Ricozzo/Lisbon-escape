@@ -176,11 +176,11 @@ class Game {
       this.ctx.fillText(`score: ${this.score}`, 650, 290);
       this.ctx.fillText(`Grab your Souvenir`, 570, this.height / 2 + 150);
       this.ctx.drawImage(passport, 650, 100, 100, 125);
-      this.ctx.drawImage(sardin, 470, 400, 75, 90);
+      this.ctx.drawImage(sardin, 470, 400, 70, 90);
       this.ctx.drawImage(portowine, 858, 400, 75, 90);
 
       // Restart Button
-      this.ctx.drawImage(restartButton, 620, 335, 154, 50);
+      this.ctx.drawImage(restartButton, 630, 335, 154, 50);
 
       // Add event listener for restart button
       const canvasElement = document.querySelector("canvas");
@@ -190,8 +190,8 @@ class Game {
 
         //Restart Button
         if (
-          canvasX >= 640 &&
-          canvasX <= 774 &&
+          canvasX >= 630 &&
+          canvasX <= 784 &&
           canvasY >= 335 &&
           canvasY <= 385
         ) {
@@ -202,7 +202,7 @@ class Game {
         //Sardin
         if (
           canvasX >= 470 && //x
-          canvasX <= 545 && //x+w
+          canvasX <= 540 && //x+w
           canvasY >= 400 && //y
           canvasY <= 490 //y+h
         ) {
@@ -225,7 +225,7 @@ class Game {
     } else {
       this.ctx.fillStyle = "white";
       this.ctx.font = "30px Minecraft";
-      this.ctx.fillText(`Score: ${this.score}`, 10, 30);
+      this.ctx.fillText(`Score: ${this.score}`, 20, 50);
     }
   }
 
