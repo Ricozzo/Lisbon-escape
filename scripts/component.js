@@ -87,14 +87,4 @@ class Component {
     );
   }
 
-  restart() {
-    this.frames = 0;
-    this.enemyOne = [];
-    this.enemyTwo = [];
-    this.enemyThree = [];
-    this.enemyFour = [];
-    this.score = 0;
-    this.lives = 3;
-    this.start();
-  }
 }
