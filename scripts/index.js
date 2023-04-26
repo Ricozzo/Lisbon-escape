@@ -15,12 +15,20 @@ const startButton = document.getElementById("start");
 const player = new Component(0, 430, 200, 150, "player", ctx);
 
 //Start Button on Click
+
+let firstTime = true;
 startButton.onclick = function () {
-  console.log("start");
-  const game = new Game(ctx, canvas.width, canvas.height, player);
-  /* backgroundMusic.play(); */
-  game.start();
-  document.getElementById("game-intro").style.display = "none";
+  if (firstTime) {
+    console.log("start");
+    const game = new Game(ctx, canvas.width, canvas.height, player);
+    game.start();
+    document.getElementById("game-intro").style.display = "none";
+    firstTime = false;
+  } else {
+    /* backgroundMusic.play(); */
+    game.start();
+    document.getElementById("game-intro").style.display = "none";
+  }
 };
 // Move the Player
 document.addEventListener("keydown", (e) => {
@@ -42,5 +50,3 @@ document.addEventListener("keyup", () => {
   player.speedX = 0;
   player.speedY = 0;
 });
-
-

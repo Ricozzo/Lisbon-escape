@@ -38,6 +38,7 @@ class Game {
     this.player.jump();
     this.player.newPos();
     this.player.draw();
+    this.drawHighScore();
     this.updateEnemies();
     this.checkGameOver();
     this.drawScore();
@@ -169,8 +170,9 @@ class Game {
         400,
         10
       );
-      if (this.score > this.highScore){
-      this.highScore = this.score;
+      const highScore = localStorage.getItem("highScore");
+      if (this.score > highScore){
+      localStorage.setItem("highScore", this.score);
       };
       this.ctx.fillStyle = "#870007";
       this.ctx.fill();
@@ -234,10 +236,10 @@ class Game {
   }
 
   drawHighScore() {
-   if (this.highScore != 0){
+   if (localStorage.getItem("highScore") != 0){
     this.ctx.fillStyle = "white";
     this.ctx.font = "30px Minecraft";
-    this.ctx.fillText(`High Score: ${this.score}`, 100, 50);
+    this.ctx.fillText(`High Score: ${localStorage.getItem("highScore")}`, 200, 50);
    }
   }
 
