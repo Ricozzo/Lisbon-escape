@@ -9,11 +9,20 @@ class Game {
     this.player = player;
     this.intervalId = null;
     this.frames = 0;
-    this.enemies = [];
+    this.enemyOne = [];
+    this.enemyTwo = [];
+    this.enemyThree = [];
+    this.enemyFour = [];
     this.score = 0;
     this.lives = 3;
     this.maleScream = new Audio("../audio/male.mp3");
     this.maleScream.loop = false;
+    this.femaleScream = new Audio("../audio/female.mp3");
+    this.femaleScream.loop = false;
+    this.pigeonScream = new Audio("../audio/pigeon.mp3");
+    this.pigeonScream.loop = false;
+    this.bikeScream = new Audio("../audio/bike.mp3");
+    this.bikeScream.loop = false;
   }
 
   start() {
@@ -62,13 +71,40 @@ class Game {
 
   //Update Enemies
   updateEnemies() {
-    for (let i = 0; i < this.enemies.length; i++) {
-      this.enemies[i].x -= 3; // Enemy goes more to the right
-      this.enemies[i].draw(); // continue to draw enemy
+    for (let i = 0; i < this.enemyOne.length; i++) {
+      this.enemyOne[i].x -= 3; // Enemy goes more to the right
+      this.enemyOne[i].draw(); // continue to draw enemy
 
-      if (this.enemies[i].x < 0) {
+      if (this.enemyOne[i].x < 0) {
         this.score++;
-        this.enemies.splice(i, 1);
+        this.enemyOne.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.enemyTwo.length; i++) {
+      this.enemyTwo[i].x -= 3; // Enemy goes more to the right
+      this.enemyTwo[i].draw(); // continue to draw enemy
+
+      if (this.enemyTwo[i].x < 0) {
+        this.score++;
+        this.enemyTwo.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.enemyThree.length; i++) {
+      this.enemyThree[i].x -= 3; // Enemy goes more to the right
+      this.enemyThree[i].draw(); // continue to draw enemy
+
+      if (this.enemyThree[i].x < 0) {
+        this.score++;
+        this.enemyThree.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.enemyFour.length; i++) {
+      this.enemyFour[i].x -= 3; // Enemy goes more to the right
+      this.enemyFour[i].draw(); // continue to draw enemy
+
+      if (this.enemyFour[i].x < 0) {
+        this.score++;
+        this.enemyFour.splice(i, 1);
       }
     }
 
@@ -76,13 +112,21 @@ class Game {
     if (this.frames % 200 === 0) {
       let randomNumber = Math.floor(Math.random() * 4);
       if (randomNumber === 0) {
-        this.enemies.push(new Component(1400, 500, 40, 80, "enemy1", this.ctx));
+        this.enemyOne.push(
+          new Component(1400, 500, 40, 80, "enemy1", this.ctx)
+        );
       } else if (randomNumber === 1) {
-        this.enemies.push(new Component(1400, 500, 40, 80, "enemy2", this.ctx));
+        this.enemyTwo.push(
+          new Component(1400, 500, 40, 80, "enemy2", this.ctx)
+        );
       } else if (randomNumber === 2) {
-        this.enemies.push(new Component(1400, 500, 80, 80, "enemy3", this.ctx));
+        this.enemyThree.push(
+          new Component(1400, 500, 80, 80, "enemy3", this.ctx)
+        );
       } else if (randomNumber === 3) {
-        this.enemies.push(new Component(1400, 140, 60, 60, "enemy4", this.ctx));
+        this.enemyFour.push(
+          new Component(1400, 140, 60, 60, "enemy4", this.ctx)
+        );
       }
       //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
@@ -130,7 +174,7 @@ class Game {
       this.ctx.font = "30px minecraft";
       this.ctx.fillText("You were deported", 575, 245);
       this.ctx.fillText(`score: ${this.score}`, 650, 290);
-      this.ctx.fillText(`Grab your Souvenir`, 585, this.height / 2 + 150);
+      this.ctx.fillText(`Grab your Souvenir`, 570, this.height / 2 + 150);
       this.ctx.drawImage(passport, 650, 100, 100, 125);
       this.ctx.drawImage(sardin, 470, 400, 75, 90);
       this.ctx.drawImage(portowine, 858, 400, 75, 90);
@@ -146,10 +190,10 @@ class Game {
 
         //Restart Button
         if (
-          canvasX >= 620 &&
+          canvasX >= 640 &&
           canvasX <= 774 &&
-          canvasY >= 360 &&
-          canvasY <= 410
+          canvasY >= 335 &&
+          canvasY <= 385
         ) {
           // Restart game
           location.reload();
@@ -194,11 +238,32 @@ class Game {
       this.lives--;
     } */
 
-    for (let i = 0; i < this.enemies.length; i++) {
-      if (this.player.crashWith(this.enemies[i])) {
+    for (let i = 0; i < this.enemyOne.length; i++) {
+      if (this.player.crashWith(this.enemyOne[i])) {
+        this.femaleScream.play();
+        this.lives--;
+        this.enemyOne.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.enemyTwo.length; i++) {
+      if (this.player.crashWith(this.enemyTwo[i])) {
         this.maleScream.play();
         this.lives--;
-        this.enemies.splice(i, 1);
+        this.enemyTwo.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.enemyThree.length; i++) {
+      if (this.player.crashWith(this.enemyThree[i])) {
+        this.bikeScream.play();
+        this.lives--;
+        this.enemyThree.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.enemyFour.length; i++) {
+      if (this.player.crashWith(this.enemyFour[i])) {
+        this.pigeonScream.play();
+        this.lives--;
+        this.enemyFour.splice(i, 1);
       }
     }
   }
