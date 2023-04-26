@@ -12,6 +12,8 @@ class Game {
     this.enemies = [];
     this.score = 0;
     this.lives = 3;
+    this.maleScream = new Audio("../audio/male.mp3");
+    this.maleScream.loop = false;
   }
 
   start() {
@@ -125,7 +127,7 @@ class Game {
       this.ctx.fillStyle = "#870007";
       this.ctx.fill();
       this.ctx.fillStyle = "white";
-      this.ctx.font = "30px Gill Sans";
+      this.ctx.font = "30px minecraft";
       this.ctx.fillText("You were deported", 575, 245);
       this.ctx.fillText(`score: ${this.score}`, 650, 290);
       this.ctx.fillText(`Grab your Souvenir`, 585, this.height / 2 + 150);
@@ -178,7 +180,7 @@ class Game {
       });
     } else {
       this.ctx.fillStyle = "white";
-      this.ctx.font = "20px Gill Sans";
+      this.ctx.font = "30px Minecraft";
       this.ctx.fillText(`Score: ${this.score}`, 10, 30);
     }
   }
@@ -194,6 +196,7 @@ class Game {
 
     for (let i = 0; i < this.enemies.length; i++) {
       if (this.player.crashWith(this.enemies[i])) {
+        this.maleScream.play();
         this.lives--;
         this.enemies.splice(i, 1);
       }

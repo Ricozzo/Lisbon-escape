@@ -13,10 +13,10 @@ body {
   opacity: 90%;
 }
 
-.instruction{
+.instruction {
   font-size: 28px;
-  font-family:'Gill Sans';
-  color:white;
+  font-family: "Minecraft";
+  color: white;
   padding: 0 400px;
 }
 
@@ -40,5 +40,5 @@ body {
 }
 
 #game-board {
-    padding: 20px 0px;
+  padding: 20px 0px;
 }
