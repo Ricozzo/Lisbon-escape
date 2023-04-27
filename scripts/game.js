@@ -13,6 +13,7 @@ class Game {
     this.enemyTwo = [];
     this.enemyThree = [];
     this.enemyFour = [];
+    this.enemyFive = [];
     this.score = 0;
     this.highScore = 0;
     this.lives = 3;
@@ -109,6 +110,15 @@ class Game {
         this.enemyFour.splice(i, 1);
       }
     }
+    for (let i = 0; i < this.enemyFive.length; i++) {
+      this.enemyFive[i].y += 3; // Enemy goes more to the right
+      this.enemyFive[i].draw(); // continue to draw enemy
+
+      if (this.enemyFive[i].y < 0) {
+        this.score++;
+        this.enemyFive.splice(i, 1);
+      }
+    }
 
     // each 2 seconds, a enemy is updated
     if (this.frames % 200 === 0) {
@@ -129,7 +139,14 @@ class Game {
         this.enemyFour.push(
           new Component(1400, 140, 60, 60, "enemy4", this.ctx)
         );
+        const randomDrop = Math.floor(Math.random() * 1400);
+        if ((this.enemyFour.x = randomDrop)) {
+          this.enemyFive.push(
+            new Component(randomDrop, 140, 60, 60, "enemy5", this.ctx)
+          );
+        }
       }
+
       //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
   }
@@ -151,7 +168,6 @@ class Game {
     const passport = new Image();
     passport.src = "../images/passport.png";
 
-    //const sardinLink = 'https://www.linkedin.com/in/elnaz-farrokhi/';
     const sardin = new Image();
     sardin.src = "../images/sardinnn.png";
 
@@ -171,9 +187,9 @@ class Game {
         10
       );
       const highScore = localStorage.getItem("highScore");
-      if (this.score > highScore){
-      localStorage.setItem("highScore", this.score);
-      };
+      if (this.score > highScore) {
+        localStorage.setItem("highScore", this.score);
+      }
       this.ctx.fillStyle = "#870007";
       this.ctx.fill();
       this.ctx.fillStyle = "white";
@@ -236,11 +252,15 @@ class Game {
   }
 
   drawHighScore() {
-   if (localStorage.getItem("highScore") != 0){
-    this.ctx.fillStyle = "white";
-    this.ctx.font = "30px Minecraft";
-    this.ctx.fillText(`High Score: ${localStorage.getItem("highScore")}`, 200, 50);
-   }
+    if (localStorage.getItem("highScore") != 0) {
+      this.ctx.fillStyle = "white";
+      this.ctx.font = "30px Minecraft";
+      this.ctx.fillText(
+        `High Score: ${localStorage.getItem("highScore")}`,
+        200,
+        50
+      );
+    }
   }
 
   checkGameOver() {
@@ -278,6 +298,13 @@ class Game {
         this.pigeonScream.play();
         this.lives--;
         this.enemyFour.splice(i, 1);
+      }
+    }
+    for (let i = 0; i < this.enemyFive.length; i++) {
+      if (this.player.crashWith(this.enemyFive[i])) {
+        this.pigeonScream.play();
+        this.lives--;
+        this.enemyFive.splice(i, 1);
       }
     }
   }

@@ -27,7 +27,9 @@ class Component {
       img.src = "../images/bike.png";
     } else if (this.character === "enemy4") {
       img.src = "../images/pigeon.png";
-    }
+    } else if (this.character === "enemy5") {
+      img.src = "../images/shit.png";
+    } 
     this.ctx.drawImage(img, this.x, this.y, this.w, this.h);
   }
 
@@ -86,5 +88,4 @@ class Component {
       this.left() < enemy.right()
     );
   }
-
 }
