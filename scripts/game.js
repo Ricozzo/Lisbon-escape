@@ -111,7 +111,7 @@ class Game {
       }
     }
     for (let i = 0; i < this.enemyFive.length; i++) {
-      this.enemyFive[i].y += 3; // Enemy goes more to the right
+      this.enemyFive[i].y += 3; // Enemy goes down
       this.enemyFive[i].draw(); // continue to draw enemy
 
       if (this.enemyFive[i].y < 0) {
@@ -136,20 +136,17 @@ class Game {
           new Component(1400, 500, 80, 80, "enemy3", this.ctx)
         );
       } else if (randomNumber === 3) {
+        const randomDrop = Math.floor(Math.random() * 1000) + 300;
         this.enemyFour.push(
-          new Component(1400, 140, 60, 60, "enemy4", this.ctx)
+          new Component(randomDrop, 140, 60, 60, "enemy4", this.ctx)
         );
-        const randomDrop = Math.floor(Math.random() * 1400);
-        if ((this.enemyFour.x = randomDrop)) {
-          this.enemyFive.push(
-            new Component(randomDrop, 140, 60, 60, "enemy5", this.ctx)
-          );
-        }
+        this.enemyFive.push(
+          new Component(randomDrop, 140, 60, 60, "enemy5", this.ctx)
+        );
       }
-
+    }
       //Component(x: any, y: any, w: any, h: any, img: any, ctx: any):
     }
-  }
 
   drawScore() {
     const hearts = new Image();
