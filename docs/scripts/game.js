@@ -190,7 +190,7 @@ class Game {
       this.ctx.fillStyle = "#870007";
       this.ctx.fill();
       this.ctx.fillStyle = "white";
-      this.ctx.font = "30px minecraft";
+      this.ctx.font = "30px DePixel";
       this.ctx.fillText("You were deported", 575, 245);
       this.ctx.fillText(`score: ${this.score}`, 650, 290);
       this.ctx.fillText(`Grab your Souvenir`, 570, this.height / 2 + 150);
@@ -243,7 +243,7 @@ class Game {
       });
     } else {
       this.ctx.fillStyle = "white";
-      this.ctx.font = "30px Minecraft";
+      this.ctx.font = "30px DePixel";
       this.ctx.fillText(`Score: ${this.score}`, 20, 50);
     }
   }
@@ -251,7 +251,7 @@ class Game {
   drawHighScore() {
     if (localStorage.getItem("highScore") != 0) {
       this.ctx.fillStyle = "white";
-      this.ctx.font = "30px Minecraft";
+      this.ctx.font = "30px DePixel";
       this.ctx.fillText(
         `High Score: ${localStorage.getItem("highScore")}`,
         200,
