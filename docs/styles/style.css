@@ -37,6 +37,7 @@ body {
   display: inline-block;
   width: 300px;
   height: 95px;
+  background-image: url("https://i.ibb.co/Jd32jjw/starts.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   text-indent: -9999px; /* Hides the text content of the button */
