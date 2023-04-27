@@ -18,17 +18,17 @@ class Component {
       this.img = img;
     });
     if (this.character === "player") {
-      img.src = "../images/tram.png";
+      img.src = "docs/assets/images/tram.png";
     } else if (this.character === "enemy1") {
-      img.src = "../images/tourist-1.png";
+      img.src = "docs/assets/images/tourist-1.png";
     } else if (this.character === "enemy2") {
-      img.src = "../images/tourist-2.png";
+      img.src = "docs/assets/images/tourist-2.png";
     } else if (this.character === "enemy3") {
-      img.src = "../images/bike.png";
+      img.src = "docs/assets/images/bike.png";
     } else if (this.character === "enemy4") {
-      img.src = "../images/pigeon.png";
+      img.src = "docs/assets/images/pigeon.png";
     } else if (this.character === "enemy5") {
-      img.src = "../images/shit.png";
+      img.src = "docs/assets/images/shit.png";
     } 
     this.ctx.drawImage(img, this.x, this.y, this.w, this.h);
   }

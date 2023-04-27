@@ -1,4 +1,4 @@
-let backgroundMusic = new Audio("../audio/garagem.mp3");
+let backgroundMusic = new Audio("docs/assets/audio/garagem.mp3");
 backgroundMusic.loop = false;
 
 class Game {
@@ -17,13 +17,13 @@ class Game {
     this.score = 0;
     this.highScore = 0;
     this.lives = 3;
-    this.maleScream = new Audio("../audio/male.mp3");
+    this.maleScream = new Audio("docs/assets/audio/male.mp3");
     this.maleScream.loop = false;
-    this.femaleScream = new Audio("../audio/female.mp3");
+    this.femaleScream = new Audio("docs/assets/audio/female.mp3");
     this.femaleScream.loop = false;
-    this.pigeonScream = new Audio("../audio/pigeon.mp3");
+    this.pigeonScream = new Audio("docs/assets/audio/pigeon.mp3");
     this.pigeonScream.loop = false;
-    this.bikeScream = new Audio("../audio/bike.mp3");
+    this.bikeScream = new Audio("docs/assets/audio/bike.mp3");
     this.bikeScream.loop = false;
   }
 
@@ -56,7 +56,7 @@ class Game {
       this.img = img;
     });
 
-    img.src = "../images/background2.jpg";
+    img.src = "docs/assets/images/background2.jpg";
     this.ctx.drawImage(img, 0, 0, this.width, this.height);
   }
 
@@ -150,7 +150,7 @@ class Game {
 
   drawScore() {
     const hearts = new Image();
-    hearts.src = "../images/heart.png";
+    hearts.src = "docs/assets/images/heart.png";
     if (this.lives === 3) {
       this.ctx.drawImage(hearts, 1350, 20, 40, 40);
       this.ctx.drawImage(hearts, 1310, 20, 40, 40);
@@ -163,16 +163,16 @@ class Game {
     }
 
     const passport = new Image();
-    passport.src = "../images/passport.png";
+    passport.src = "docs/assets/images/passport.png";
 
     const sardin = new Image();
-    sardin.src = "../images/sardinnn.png";
+    sardin.src = "docs/assets/images/sardinnn.png";
 
     const portowine = new Image();
-    portowine.src = "../images/portowine.png";
+    portowine.src = "docs/assets/images/portowine.png";
 
     const restartButton = new Image();
-    restartButton.src = "../images/restart.png";
+    restartButton.src = "docs/assets/images/restart.png";
 
     if (this.lives <= 0) {
       this.stop();
