@@ -18,7 +18,7 @@ class Component {
       this.img = img;
     });
     if (this.character === "player") {
-      img.src = "docs/assets/images/tram.png";
+      img.src = "docs/assets/images/Tram.png";
     } else if (this.character === "enemy1") {
       img.src = "docs/assets/images/tourist-1.png";
     } else if (this.character === "enemy2") {
