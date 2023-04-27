@@ -20,7 +20,7 @@ body {
 
 .instruction {
   font-size: 28px;
-  font-family: "Minecraft";
+  font-family: 'Minecraft', sans-serif;
   color: white;
   padding: 0 300px;
 }
